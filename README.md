@@ -25,3 +25,4 @@ The exposed test cases must be separated in a dedicated subsystem.
 # launch
 
 launch the main method in main.scala class at src.main.scala
+selected buyers for the created property will be printed in console
