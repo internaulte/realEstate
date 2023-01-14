@@ -34,7 +34,7 @@ protected[properties] final case class DatabasePropertyDto (
   }
 }
 
-object DatabasePropertyDto {
+protected[properties] object DatabasePropertyDto {
   def apply(property: Property): DatabasePropertyDto = {
     DatabasePropertyDto(
       id = property.id,

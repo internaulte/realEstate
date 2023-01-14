@@ -7,7 +7,7 @@ import zio.prelude.newtypes.Natural
 import java.time.LocalDate
 import java.util.UUID
 
-final case class Property(
+final case class Property( // TODO: add mocks in test
     id: UUID,
     propertyType: PropertyType,
     position: Point,

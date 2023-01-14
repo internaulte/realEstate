@@ -11,7 +11,7 @@ import java.util.UUID
 import scala.collection.mutable
 import scala.concurrent.Future
 
-protected class BuyersRepositoryImpl extends BuyersRepository {
+protected class BuyersRepositoryImpl extends BuyersRepository { // TODO: database config is missing
   override def getBuyersForProperty(property: Property): Future[Option[NonEmptySet[Buyer]]] = {
     val filteredBuyers = databaseBuyers
       .filter { buyer =>
@@ -30,7 +30,7 @@ protected class BuyersRepositoryImpl extends BuyersRepository {
       buyerEmailAddress = "email2@email2.com",
       filters = Some(
         NonEmptySet(
-          PriceInMillisFilter(maxValue = Some(Natural(30000000))),
+          PriceInMillisFilter(maxValue = Some(Natural(350000000))),
           SurfaceInMeterSquareFilter(minValue = Natural(80)),
           NumberOfRoomsFilter(minValue = Natural(3), maxValue = None),
           PropertyTypesFilter(NonEmptySet(PropertyType.Apartment))

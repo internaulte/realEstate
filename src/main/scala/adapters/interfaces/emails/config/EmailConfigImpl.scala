@@ -7,6 +7,10 @@ import scala.concurrent.Future
 
 protected object EmailConfigImpl extends EmailConfig {
   override val mailer: NonEmptySet[PreparedEmail] => Future[Unit] = {
-    _ => Future.successful(())
+    mailsToSend => Future.successful{
+      println("starts to send mails")
+      println(mailsToSend)
+      println("mails send")
+    }
   }
 }

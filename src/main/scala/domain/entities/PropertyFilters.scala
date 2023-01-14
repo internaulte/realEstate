@@ -1,12 +1,13 @@
 package domain.entities
 
 import domain.entities.utils.geographicCalculations.Area
+import domain.entities.utils.types.PropertyType
 import zio.prelude.NonEmptySet
 import zio.prelude.newtypes.Natural
 
 import java.time.{LocalDate, Month, YearMonth}
 
-sealed trait PropertyFilters {
+sealed trait PropertyFilters { //TODO: add Mocks in tests
   def isPropertyOkForFilter(property: Property): Boolean
 }
 
@@ -28,7 +29,7 @@ sealed trait EnumPropertyFilter[A] extends PropertyFilters {
   val values: NonEmptySet[A]
 }
 
-final case class PriceInMillisFilter(
+final case class PriceInMillisFilter(// TODO: Natural is maybe not large enough if price is in Millis. Use LongNatural ?
     override val minValue: Natural = Natural.zero,
     override val maxValue: Option[Natural] = None
 ) extends NumericPropertyFilters {
@@ -73,7 +74,7 @@ final case class HasGardenFilter(override val isValid: Boolean) extends BooleanP
   }
 }
 
-final case class PropertyTypesFilter[PropertyType](override val values: NonEmptySet[PropertyType])
+final case class PropertyTypesFilter(override val values: NonEmptySet[PropertyType])
     extends EnumPropertyFilter[PropertyType] {
   override def isPropertyOkForFilter(property: Property): Boolean = {
     values.contains(property.propertyType)

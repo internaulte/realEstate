@@ -21,3 +21,7 @@ The objective is to create an application to identify potential buyers and notif
 Model this issue in the language you master (scala).
 
 The exposed test cases must be separated in a dedicated subsystem.
+
+# launch
+
+launch the main method in main.scala class at src.main.scala
